@@ -1,0 +1,40 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+@* <h1>@ViewData["Title"]</h1> *@
+<main role="main" class="container pb-3">
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <h1>Registre-se</h1>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="input-box mb-3">
+            <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="E-mail" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="input-box mb-3">
+            <input autocomplete="username" aria-required="true" placeholder="Nome Completo" />
+        </div>
+        <div class="input-box mb-3">
+            <input asp-for="Input.Password" autocomplete="new-password" aria-required="true" placeholder="Nova Senha" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="input-box mb-3">
+            <input asp-for="Input.ConfirmPassword" autocomplete="new-password" aria-required="true" placeholder="Repita a Senha" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <button id="registerSubmit" type="submit" class="registro">Registrar</button>
+        <div class="register-link">
+            <p>Já tem uma conta? <a asp-area="Identity" asp-page="/Account/Login">Faça Login</a></p>
+        </div>
+
+    </form>
+
+</main>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
